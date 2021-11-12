@@ -7,6 +7,13 @@ namespace RoomBookingSystem.Core.Tests;
 
 public class RoomBookingRequestProcessorTest
 {
+    private RoomBookingRequestProcessor _roomBookingRequestProcessor;
+
+    public RoomBookingRequestProcessorTest()
+    {
+        _roomBookingRequestProcessor = new RoomBookingRequestProcessor();
+    }
+
     [Fact]
     public void Should_Return_Room_Booking_Response_With_Request_Values()
     {
@@ -17,10 +24,9 @@ public class RoomBookingRequestProcessorTest
             Email = "armin@gmail.com",
             CheckIn = new DateTime(2021, 11, 12, 12, 00, 00),
         };
-        RoomBookingRequestProcessor processor = new();
-
+     
         // Act
-        RoomBookingResponse roomBookingResponse = processor.BookRoom(roomBookingRequest);
+        RoomBookingResponse roomBookingResponse = _roomBookingRequestProcessor.BookRoom(roomBookingRequest);
 
         // Assert
         Assert.NotNull(roomBookingResponse);
@@ -30,8 +36,7 @@ public class RoomBookingRequestProcessorTest
     [Fact]
     public void Should_Throw_ArgumentNullException_For_Null_Request()
     {
-        RoomBookingRequestProcessor roomBookingRequestProcessor = new();
-
-        Assert.Throws<ArgumentNullException>(() => roomBookingRequestProcessor.BookRoom(null));
+        var argumentNullException = Assert.Throws<ArgumentNullException>(() => _roomBookingRequestProcessor.BookRoom(null));
+        Assert.Equal("roomBookingRequest", argumentNullException.ParamName);
     }
 }
