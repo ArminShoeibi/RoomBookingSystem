@@ -1,4 +1,6 @@
-﻿namespace RoomBookingSystem.Core.Tests;
+﻿using System;
+
+namespace RoomBookingSystem.Core.Tests;
 
 public class RoomBookingResponse
 {

@@ -22,7 +22,9 @@ public class RoomBookingRequestProcessorTest
 
         // Assert
         Assert.NotNull(roomBookingResponse);
-        Assert.Equal(roomBookingResponse.)
+        Assert.Equal(roomBookingResponse.FullName, roomBookingRequest.FullName);
+        Assert.Equal(roomBookingResponse.Email, roomBookingRequest.Email);
+        Assert.Equal(roomBookingResponse.CheckIn, roomBookingRequest.CheckIn);
     }
 
 }
