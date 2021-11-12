@@ -27,4 +27,11 @@ public class RoomBookingRequestProcessorTest
         Assert.Equal(roomBookingResponse.Request, roomBookingRequest);
     }
 
+    [Fact]
+    public void Should_Throw_ArgumentNullException_For_Null_Request()
+    {
+        RoomBookingRequestProcessor roomBookingRequestProcessor = new();
+
+        Assert.Throws<ArgumentNullException>(() => roomBookingRequestProcessor.BookRoom(null));
+    }
 }
