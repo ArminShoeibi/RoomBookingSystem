@@ -13,20 +13,23 @@ public class RoomBookingRequestProcessor
         _roomBookingService = roomBookingService;
     }
 
-    public RoomBookingResponse BookRoom(RoomBookingRequest roomBookingRequest)
+    public RoomBookingResult BookRoom(RoomBookingRequest roomBookingRequest)
     {
         ArgumentNullException.ThrowIfNull(roomBookingRequest);
 
-        _roomBookingService.CreateRoomBooking(new RoomBooking
+        _roomBookingService.CreateRoomBooking(CreateRoomBookingObject<RoomBooking>(roomBookingRequest));
+
+        return CreateRoomBookingObject<RoomBookingResult>(roomBookingRequest);
+    }
+
+    private TRoomBooking CreateRoomBookingObject<TRoomBooking>(RoomBookingRequest roomBookingRequest)
+        where TRoomBooking : RoomBookingBase, new()
+    {
+        return new TRoomBooking
         {
             CheckIn = roomBookingRequest.CheckIn,
             FullName = roomBookingRequest.FullName,
-            Email = roomBookingRequest.Email
-        });
-
-        return new RoomBookingResponse
-        {
-            Request = roomBookingRequest,
+            Email = roomBookingRequest.Email,
         };
     }
 }

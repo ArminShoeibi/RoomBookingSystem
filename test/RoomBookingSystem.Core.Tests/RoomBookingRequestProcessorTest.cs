@@ -16,7 +16,6 @@ public class RoomBookingRequestProcessorTest
 
     public RoomBookingRequestProcessorTest()
     {
-
         _roomBookingRequest = new RoomBookingRequest()
         {
             FullName = "Armin Shoeibi",
@@ -31,11 +30,13 @@ public class RoomBookingRequestProcessorTest
     public void Should_Return_Room_Booking_Response_With_Request_Values()
     {
         // Act
-        RoomBookingResponse roomBookingResponse = _roomBookingRequestProcessor.BookRoom(_roomBookingRequest);
+        RoomBookingResult roomBookingResponse = _roomBookingRequestProcessor.BookRoom(_roomBookingRequest);
 
         // Assert
         Assert.NotNull(roomBookingResponse);
-        Assert.Equal(roomBookingResponse.Request, _roomBookingRequest);
+        Assert.Equal(roomBookingResponse.CheckIn, _roomBookingRequest.CheckIn);
+        Assert.Equal(roomBookingResponse.Email, _roomBookingRequest.Email);
+        Assert.Equal(roomBookingResponse.FullName, _roomBookingRequest.FullName);
     }
 
     [Fact]
@@ -56,15 +57,15 @@ public class RoomBookingRequestProcessorTest
                                    insertedRoomBooking = roomBooking;
                                });
 
-        RoomBookingResponse roomBookingResponse = _roomBookingRequestProcessor.BookRoom(_roomBookingRequest);
+        RoomBookingResult roomBookingResponse = _roomBookingRequestProcessor.BookRoom(_roomBookingRequest);
 
 
         _roomBookingServiceMock.Verify(c => c.CreateRoomBooking(It.IsAny<RoomBooking>()), Times.Once);
 
         Assert.NotNull(insertedRoomBooking);
-        Assert.Equal(insertedRoomBooking.CheckIn, roomBookingResponse.Request.CheckIn);
-        Assert.Equal(insertedRoomBooking.Email, roomBookingResponse.Request.Email);
-        Assert.Equal(insertedRoomBooking.FullName, roomBookingResponse.Request.FullName);
+        Assert.Equal(insertedRoomBooking.CheckIn, roomBookingResponse.CheckIn);
+        Assert.Equal(insertedRoomBooking.Email, roomBookingResponse.Email);
+        Assert.Equal(insertedRoomBooking.FullName, roomBookingResponse.FullName);
     }
 
 }

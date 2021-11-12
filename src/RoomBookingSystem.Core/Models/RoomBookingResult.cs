@@ -2,6 +2,6 @@
 
 namespace RoomBookingSystem.Core.Models;
 
-public class RoomBookingRequest : RoomBookingBase
+public class RoomBookingResult : RoomBookingBase
 {
 }
