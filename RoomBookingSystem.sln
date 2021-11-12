@@ -7,7 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6ED75B54-F4D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5D0B0255-164F-47D8-B69A-BECC708836A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingSystem.Core.Tests", "test\RoomBookingSystem.Core.Tests\RoomBookingSystem.Core.Tests.csproj", "{10E3A328-36C1-46BC-8D57-A1E0345F2710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingSystem.Core.Tests", "test\RoomBookingSystem.Core.Tests\RoomBookingSystem.Core.Tests.csproj", "{10E3A328-36C1-46BC-8D57-A1E0345F2710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingSystem.Core", "src\RoomBookingSystem.Core\RoomBookingSystem.Core.csproj", "{F936BF89-67C9-444F-8500-76D1C7DB2173}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +21,17 @@ Global
 		{10E3A328-36C1-46BC-8D57-A1E0345F2710}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10E3A328-36C1-46BC-8D57-A1E0345F2710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10E3A328-36C1-46BC-8D57-A1E0345F2710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F936BF89-67C9-444F-8500-76D1C7DB2173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F936BF89-67C9-444F-8500-76D1C7DB2173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F936BF89-67C9-444F-8500-76D1C7DB2173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F936BF89-67C9-444F-8500-76D1C7DB2173}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{10E3A328-36C1-46BC-8D57-A1E0345F2710} = {5D0B0255-164F-47D8-B69A-BECC708836A7}
+		{F936BF89-67C9-444F-8500-76D1C7DB2173} = {6ED75B54-F4DD-465C-86F5-5822190F1B4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EA6847B-7130-4F25-B188-E226C9B374F6}

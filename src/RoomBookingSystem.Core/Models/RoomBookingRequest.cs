@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RoomBookingSystem.Core.Tests;
+namespace RoomBookingSystem.Core.Models;
 
 public class RoomBookingRequest
 {
