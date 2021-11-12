@@ -1,4 +1,5 @@
 ﻿using Moq;
+using RoomBookingSystem.Core.Domain;
 using RoomBookingSystem.Core.Models;
 using RoomBookingSystem.Core.Processors;
 using RoomBookingSystem.Core.Services;
@@ -15,7 +16,7 @@ public class RoomBookingRequestProcessorTest
 
     public RoomBookingRequestProcessorTest()
     {
-        
+
         _roomBookingRequest = new RoomBookingRequest()
         {
             FullName = "Armin Shoeibi",
@@ -48,7 +49,22 @@ public class RoomBookingRequestProcessorTest
     [Fact]
     public void Should_Create_Room_Booking_Request()
     {
+        RoomBooking insertedRoomBooking = null;
+        _roomBookingServiceMock.Setup(c => c.CreateRoomBooking(It.IsAny<RoomBooking>()))
+                               .Callback<RoomBooking>(roomBooking =>
+                               {
+                                   insertedRoomBooking = roomBooking;
+                               });
+
         RoomBookingResponse roomBookingResponse = _roomBookingRequestProcessor.BookRoom(_roomBookingRequest);
+
+
+        _roomBookingServiceMock.Verify(c => c.CreateRoomBooking(It.IsAny<RoomBooking>()), Times.Once);
+
+        Assert.NotNull(insertedRoomBooking);
+        Assert.Equal(insertedRoomBooking.CheckIn, roomBookingResponse.Request.CheckIn);
+        Assert.Equal(insertedRoomBooking.Email, roomBookingResponse.Request.Email);
+        Assert.Equal(insertedRoomBooking.FullName, roomBookingResponse.Request.FullName);
     }
 
 }
